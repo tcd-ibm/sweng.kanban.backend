@@ -10,7 +10,7 @@ var swimLaneModel = require("../models/SwimLaneModel");
 router.get("/listAllKanbanBoards", function (req, res, next) {
   kanbanBoardModel
     .find({})
-    .populate({ path: "kanbanBoardSwimLane", model: "SwimLane" })
+    .populate("kanbanBoardSwimLanes")
     .exec(function (err, boards) {
       if (err) {
         res.send(err);
@@ -26,7 +26,7 @@ router.get("/findKanbanBoardByTitle", function (req, res, next) {
   if (title) {
     kanbanBoardModel
       .findOne({ kanbanBoardTitle: title })
-      .populate({ path: "kanbanBoardSwimLane", model: "SwimLane" })
+      .populate("kanbanBoardSwimLanes")
       .exec(function (err, board) {
         if (err) {
           res.send(err);

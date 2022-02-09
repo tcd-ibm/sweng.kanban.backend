@@ -1,0 +1,713 @@
+{
+	"variables": [],
+	"info": {
+		"name": "KanbanBoardAPI",
+		"_postman_id": "cabf2626-5b5a-46c4-6625-cdb38c4ee95c",
+		"description": "# Introduction\nThis api provides a number of endpoints to facilitate the logic for kanban board application.\n\n# Authentication\nAuthentification is currently not required",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "host_url/listAllKanbanBoards",
+			"request": {
+				"url": "http://localhost:9000/listAllKanbanBoards",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Lists all kanban boards stored in the database and populates the referenced swimlanes in them.\n"
+			},
+			"response": [
+				{
+					"id": "f5b58048-77ef-4925-b31b-b9acf91746c6",
+					"name": "host_url/listAllKanbanBoards",
+					"originalRequest": {
+						"url": "http://localhost:9000/listAllKanbanBoards",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "294",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:41:04 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"126-LegQuUqGDULklrAiF7BCeZAklSc\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 35,
+					"body": "[{\"_id\":\"6203c46d9257dc018bcd3c9e\",\"kanbanBoardTitle\":\"Test\",\"kanbanBoardSwimLanes\":[{\"_id\":\"6203c46d9257dc018bcd3c9b\",\"swimLaneTitle\":\"todo\",\"__v\":0},{\"_id\":\"6203c46d9257dc018bcd3c9c\",\"swimLaneTitle\":\"doing\",\"__v\":0},{\"_id\":\"6203c46d9257dc018bcd3c9d\",\"swimLaneTitle\":\"done\",\"__v\":0}],\"__v\":0}]"
+				}
+			]
+		},
+		{
+			"name": "host_url/findKanbanBoardByTitle",
+			"request": {
+				"url": "http://localhost:9000/findKanbanBoardByTitle",
+				"method": "GET",
+				"header": [
+					{
+						"key": "title",
+						"value": "Test",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Finds one board based on its title, the associated swimlanes are populated:\n\nRequires field \"title\" in the header. \n\nIf no board is found, returns a corresponding error message.\n"
+			},
+			"response": [
+				{
+					"id": "cc4e3aa9-691c-4579-a4ff-8d29272bbfb1",
+					"name": "host_url/findKanbanBoardByTitle",
+					"originalRequest": {
+						"url": "http://localhost:9000/findKanbanBoardByTitle",
+						"method": "GET",
+						"header": [
+							{
+								"key": "title",
+								"value": "Test",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "292",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:41:15 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"124-ZdJ4Nefz+7qx0CNR+IsD+z95Itc\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 70,
+					"body": "{\"_id\":\"6203c46d9257dc018bcd3c9e\",\"kanbanBoardTitle\":\"Test\",\"kanbanBoardSwimLanes\":[{\"_id\":\"6203c46d9257dc018bcd3c9b\",\"swimLaneTitle\":\"todo\",\"__v\":0},{\"_id\":\"6203c46d9257dc018bcd3c9c\",\"swimLaneTitle\":\"doing\",\"__v\":0},{\"_id\":\"6203c46d9257dc018bcd3c9d\",\"swimLaneTitle\":\"done\",\"__v\":0}],\"__v\":0}"
+				}
+			]
+		},
+		{
+			"name": "host_url/deleteKanbanBoardByTitle",
+			"request": {
+				"url": "http://localhost:9000/deleteKanbanBoardByTitle",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Test\"}"
+				},
+				"description": "Deletes a kanban board by title. Also deletes all swimlanes referenced by the kanban board. Has no effect if kanban board is not found:\n\nNeeds the following headers:\n\nContent-Type: application/json\n\nNeeds a title in the body formatted as json:\n\n{'title': 'yourtitle'}"
+			},
+			"response": [
+				{
+					"id": "9114c437-94c9-48cf-981c-04915cc85112",
+					"name": "host_url/deleteKanbanBoardByTitle",
+					"originalRequest": {
+						"url": "http://localhost:9000/deleteKanbanBoardByTitle",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Test\"}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "115",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:41:58 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"73-EcmcoHxuTqPDpDav7tMv+asQzvo\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 36,
+					"body": "Deleted successfully, deleted swimLanes: 6203c46d9257dc018bcd3c9b,6203c46d9257dc018bcd3c9c,6203c46d9257dc018bcd3c9d"
+				}
+			]
+		},
+		{
+			"name": "host_url/createNewKanbanBoard",
+			"request": {
+				"url": "http://localhost:9000/createNewKanbanBoard",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Pavel\"}"
+				},
+				"description": "Creates a new kanban board. Kanbanboards have to be unique by title, if kanban board already exists, has no effect.\n\nRequired headers:\n\nContent-Type: application/json\n\nNeeds title parameter in the json body of the request:\n\n{\"title\": \"Pavel's board\"}\n"
+			},
+			"response": [
+				{
+					"id": "5b97d8c1-1583-46ad-b9e4-fa9e196b0301",
+					"name": "host_url/createNewKanbanBoard",
+					"originalRequest": {
+						"url": "http://localhost:9000/createNewKanbanBoard",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Pavel\"}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "39",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:42:39 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"27-AfeQwf/tmL0Ykr9/lz90JOqcj30\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 75,
+					"body": "Successfully created a new kanban board"
+				}
+			]
+		},
+		{
+			"name": "host_url/addSwimLaneToBoard",
+			"request": {
+				"url": "http://localhost:9000/addSwimLaneToBoard",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"kanbanBoardTitle\":\"Pavel\",\n\t\"swimLaneTitle\": \"Test\"\n}"
+				},
+				"description": "Adds a new SwimLane to the kanban board. If no board exists, has no effect.\n\nRequired headers:\n\nContent-Type: application/json\n\nNeeds title parameter in the json body of the request for both kanban board and SwimLane:\n\n{\n\t\"kanbanBoardTitle\":\"Pavel\",\n\t\"swimLaneTitle\": \"Test\"\n}\n"
+			},
+			"response": [
+				{
+					"id": "5bf37022-cfc8-457d-b4fb-9dbf7427046d",
+					"name": "host_url/addSwimLaneToBoard",
+					"originalRequest": {
+						"url": "http://localhost:9000/addSwimLaneToBoard",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"kanbanBoardTitle\":\"Pavel\",\n\t\"swimLaneTitle\": \"Test\"\n}"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "121",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:43:18 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"79-t4pM+KyDXShUpIbSNuCir1zQbqk\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 42,
+					"body": "{\"_id\":\"6203c4cf9257dc018bcd3ca9\",\"kanbanBoardTitle\":\"Pavel\",\"kanbanBoardSwimLanes\":[\"6203c4f69257dc018bcd3cac\"],\"__v\":0}"
+				}
+			]
+		},
+		{
+			"name": "host_url/addDummyData",
+			"request": {
+				"url": "http://localhost:9000/addDummyData",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": "For testing purposes only. Adds a dummy kanban board titled \"Test\" and 3 associated swim lanes when accessed.\n\nDoes not care about headers and body."
+			},
+			"response": [
+				{
+					"id": "5c50bbb8-2f9c-4e1f-83f2-87d3b737706f",
+					"name": "host_url/addDummyData",
+					"originalRequest": {
+						"url": "http://localhost:9000/addDummyData",
+						"method": "POST",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "29",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:41:01 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"1d-h64qq9QH+laPpLd9H7piNNwloAM\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 39,
+					"body": "Succesfully added dummy data!"
+				}
+			]
+		},
+		{
+			"name": "host_url/deleteAllBoards",
+			"request": {
+				"url": "http://localhost:9000/deleteAllBoards",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "For testing purposes only. Deletes all boards, but does not affect swimlanes.\n\nDoes not care about header and body."
+			},
+			"response": [
+				{
+					"id": "78e93720-31d6-47c4-81f0-452e4f136a90",
+					"name": "host_url/deleteAllBoards",
+					"originalRequest": {
+						"url": "http://localhost:9000/deleteAllBoards",
+						"method": "DELETE",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "31",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:43:45 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"1f-2UoNtNCwiDsyKav++2+LepUhaOY\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 45,
+					"body": "Succesfully deleted all boards!"
+				}
+			]
+		},
+		{
+			"name": "host_url/deleteAllSwimLanes",
+			"request": {
+				"url": "http://localhost:9000/deleteAllSwimLanes",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "For testing purposes only! Deletes all swim lanes but does not affect the references in kanban boards.\n\nDoes not care about header and body."
+			},
+			"response": [
+				{
+					"id": "7442642b-92ad-4253-bdfb-bb1901a72d02",
+					"name": "host_url/deleteAllSwimLanes",
+					"originalRequest": {
+						"url": "http://localhost:9000/deleteAllSwimLanes",
+						"method": "DELETE",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "access-control-allow-origin",
+							"key": "access-control-allow-origin",
+							"value": "*",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "34",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "text/html; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 09 Feb 2022 13:43:49 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"22-smB0uJ1RGFFwuwTMnFm6JgUyVY0\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "keep-alive",
+							"key": "keep-alive",
+							"value": "timeout=5",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 29,
+					"body": "Succesfully deleted all SwimLanes!"
+				}
+			]
+		}
+	]
+}

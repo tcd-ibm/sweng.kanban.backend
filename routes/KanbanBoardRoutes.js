@@ -100,4 +100,42 @@ router.post("/createNewKanbanBoard", function (req, res, next) {
   }
 });
 
+router.post("/addSwimLaneToBoard", function (req, res, err) {
+  const swimLaneTitle = req.body.swimLaneTitle;
+  const kanbanBoardTitle = req.body.kanbanBoardTitle;
+
+  if (swimLaneTitle && kanbanBoardTitle) {
+    const uniqueSwimLaneTitle = kanbanBoardTitle + "/" + swimLaneTitle;
+    const newSwimLane = new swimLaneModel({
+      swimLaneTitle: uniqueSwimLaneTitle,
+    });
+    newSwimLane.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
+    });
+
+    kanbanBoardModel.findOneAndUpdate(
+      { kanbanBoardTitle: kanbanBoardTitle },
+      { $push: { kanbanBoardSwimLanes: newSwimLane._id } },
+      { new: true },
+      function (err, updatedBoard) {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(updatedBoard);
+        }
+      }
+    );
+  } else {
+    if (kanbanBoardTitle) {
+      res.send("SwimLane title not specified!");
+    } else if (swimLaneTitle) {
+      res.send("Kanban Board title not specified!");
+    } else {
+      res.send("Kanban board title and SwimLane title not specified!");
+    }
+  }
+});
+
 module.exports = router;

@@ -7,15 +7,10 @@ var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
 
-/*models*/
-
-var kanbanBoardModel = require("./models/KanbanBoardModel");
-
-var swimLaneModel = require("./models/SwimLaneModel");
-
 /*routers*/
 
 var kanbanBoardRouter = require("./routes/KanbanBoardRoutes");
+var testRouter = require("./routes/TestRoutes");
 
 var app = express();
 app.use(cors());
@@ -24,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/", kanbanBoardRouter);
+app.use("/", testRouter);
 
 /*Connecting to database*/
 
@@ -46,32 +42,6 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.status(err.status || 500);
   res.json(err.message);
-});
-
-/*default error handler for DB*/
-function defaultDbError(err) {
-  if (err) {
-    console.log(err);
-  }
-}
-/*populate database with test kanban board*/
-
-const todo = new swimLaneModel({ swimLaneTitle: "todo" });
-todo.save(defaultDbError);
-
-const doing = new swimLaneModel({ swimLaneTitle: "doing" });
-doing.save(defaultDbError);
-
-const done = new swimLaneModel({ swimLaneTitle: "done" });
-done.save(defaultDbError);
-
-const testKanbanBoard = new kanbanBoardModel({
-  kanbanBoardTitle: "Test",
-  kanbanBoardSwimLanes: [todo._id, doing._id, done._id]
-});
-
-testKanbanBoard.save(function(err, testBoard){
-  console.log(testBoard);
 });
 
 /*start listening*/

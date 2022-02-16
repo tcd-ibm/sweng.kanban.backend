@@ -3,9 +3,11 @@ const swimLane = new mongoose.Schema({
   swimLaneTitle: {
     type: String,
     required: true,
-    unique:true
-  }
-  /*Need to define an array of references to tasks here*/
+    unique:true 
+  },
+
+  kanbanSwimLaneTasks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Task'}]
+
 });
 
 module.exports = mongoose.model('SwimLane', swimLane)

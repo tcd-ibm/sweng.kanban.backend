@@ -1,5 +1,4 @@
 var express = require("express");
-const SwimLaneModel = require("../models/SwimLaneModel");
 var router = express.Router();
 
 /*models*/

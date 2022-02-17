@@ -11,6 +11,8 @@ var dotenv = require("dotenv").config();
 
 var kanbanBoardRouter = require("./routes/KanbanBoardRoutes");
 var testRouter = require("./routes/TestRoutes");
+var taskRouter = require("./routes/TaskRoutes");
+var swimLaneRouter = require("./routes/SwimLaneRoutes");
 
 var app = express();
 app.use(cors());
@@ -20,6 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", kanbanBoardRouter);
 app.use("/", testRouter);
+app.use("/", taskRouter);
+app.use("/", swimLaneRouter);
 
 /*Connecting to database*/
 

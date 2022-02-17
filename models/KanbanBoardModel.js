@@ -9,4 +9,6 @@ const kanbanBoard = new mongoose.Schema({
   kanbanBoardSwimLanes: [{type: mongoose.Schema.Types.ObjectId, ref: 'SwimLane'}]
 });
 
-module.exports = mongoose.model('KanbanBoard',kanbanBoard)
+const modelKanbanBoard = mongoose.model('KanbanBoard',kanbanBoard);
+
+module.exports = modelKanbanBoard;

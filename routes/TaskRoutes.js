@@ -41,3 +41,5 @@ router.post("/createTask", function (req, res, next) {
         res.send("missing parameters")
     }
 });
+
+module.exports = router;

@@ -54,3 +54,5 @@ router.post("/moveTask", function (req, res, next) {
           );
           }
         });
+
+module.exports = router;

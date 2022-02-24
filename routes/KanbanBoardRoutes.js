@@ -7,6 +7,8 @@ var kanbanBoardModel = require("../models/KanbanBoardModel");
 
 var swimLaneModel = require("../models/SwimLaneModel");
 
+var taskModel = require("../models/TaskModel");
+
 router.get("/listAllKanbanBoards", function (req, res, next) {
   kanbanBoardModel
     .find({})
@@ -49,6 +51,25 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
         if (err) {
           res.send(err);
         } else {
+          swimLaneModel.findMany(
+            { _id: { $in: deleted.kanbanBoardSwimLanes } },
+            function (err, docs) {
+              if (err) {
+                res.send(err);
+              } else {
+                for (let i = 0; i < docs.length; i++) {
+                  taskModel.deleteMany(
+                    { _id: { $in: docs[i].kanbanSwimLaneTasks } },
+                    function (err) {
+                      if (err) {
+                        res.send(err);
+                      }
+                    }
+                  )
+                }
+              }
+            }
+          );
           swimLaneModel.deleteMany(
             { _id: { $in: deleted.kanbanBoardSwimLanes } },
             function (err) {

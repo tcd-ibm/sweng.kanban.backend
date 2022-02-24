@@ -51,7 +51,7 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
         if (err) {
           res.send(err);
         } else {
-          swimLaneModel.findMany(
+          await swimLaneModel.findMany(
             { _id: { $in: deleted.kanbanBoardSwimLanes } },
             function (err, docs) {
               if (err) {
@@ -70,7 +70,7 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
               }
             }
           );
-          swimLaneModel.deleteMany(
+          await swimLaneModel.deleteMany(
             { _id: { $in: deleted.kanbanBoardSwimLanes } },
             function (err) {
               if (err) {

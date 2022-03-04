@@ -1,0 +1,8 @@
+Blue Ocean
+Credentials Plugin
+Docker Plugin
+Github Plugin
+NodeJS Plugin
+Oracle Java SE Development Kit Installer Plugin
+Pipeline Plugin
+Timestamper

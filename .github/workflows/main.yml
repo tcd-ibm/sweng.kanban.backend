@@ -10,7 +10,8 @@ jobs:
       - name: Create or Update Project Card
         uses: peter-evans/create-or-update-project-card@v1
         with:
-          token: ${{ secrets.PAT }} 
+          token: ${{secrets.PAT}} 
           project-location: tcd-ibm
           project-number: 2
           column-name: To do
+          issue-number: 1

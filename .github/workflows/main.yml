@@ -14,4 +14,3 @@ jobs:
           project-location: tcd-ibm
           project-number: 2
           column-name: To do
-          issue-number: 1

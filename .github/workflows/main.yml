@@ -11,6 +11,6 @@ jobs:
         uses: peter-evans/create-or-update-project-card@v1
         with:
           token: ${{ secrets.PAT }} 
-          project-location: https://github.com/tcd-ibm
-          project-name: https://github.com/orgs/tcd-ibm/projects/2
+          project-location: tcd-ibm
+          project-number: 2
           column-name: To do

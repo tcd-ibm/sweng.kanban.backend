@@ -8,14 +8,14 @@
 | **Assumptions:** | Compatibility with NodeJS |
 | **Motivation:** | Good software development process, Increased integration speed |
 | **Alternatives:** | Jenkins, CircleCI, Travis CI, IBM Cloud CI, AWS CodePipeline |
-| **Justifications:** | ***We chose GitHub Actions because*** - well documented, easy-of-use, readily available examples and templates, Already using GitHub Actions for assigning issues to projects automatically, NodeJS and build and test workflow available, OpenShift deployment available 
+| **Justifications:** | ***We chose GitHub Actions because*** - well documented, easy-of-use, readily available examples and templates, Already using GitHub Actions for assigning issues to projects automatically, NodeJS build and test workflow available, OpenShift deployment available 
 | |***Jenkins*** - Quite old, poor support for some plug-ins, extra set-up, despite being available on OpenShift Developer Sandbox there is no possibility for configuring plug-ins manually which makes this entirely not feasible |
 ||***Circle CI*** - Isn't fully Open Source |
 ||***Travis CI*** - Many compatible features but doesn't have as many templates available as GitHub Actions |
 ||***IBM Cloud CI*** - Requires the use of IBM CD, quite advanced set-up and features available which put it beyond the scope of our project |
 || ***AWS CodePipeline*** - Hard to set-up, requires other AWS products, e.g., network set-up. Available documentation is hard to navigate |
 | **Implications:** | Ties us to GitHub Actions more, making using third-party tools more difficult to integrate into the pipeline |
-| **Derived requirements:** | Use as CI template to build and push the container registry |
+| **Derived requirements:** | Use a CI template to build and push the container registry |
 | **Related Decisions:** | Using GitHub Actions for OpenShift deployments (template available) |
 | **References:** | **[https://katalon.com/resources-center/blog/ci-cd-tools](https://katalon.com/resources-center/blog/ci-cd-tools)** |
 ||**[https://harness.io/blog/devops/ci-cd-tools/](https://harness.io/blog/devops/ci-cd-tools/)**|
@@ -41,13 +41,13 @@
 | **Assumptions:** | Compatibility with QuayIO |
 | **Motivation:** | Good software development process, Increased delivery speed |
 | **Alternatives:** | ArgoCD, IBM CD, AWS CodeDeploy, Helm Charts (Openshift container platform) |
-| **Justifications:** | ***We chose GitHub Actions because*** - well documented, easy-of-use, readily available examples and templates, Already using GitHub Actions for assigning issues to projects automatically, NodeJS and build and test workflow available, OpenShift deployment available 
+| **Justifications:** | ***We chose GitHub Actions because*** - well documented, easy-of-use, readily available examples and templates, Already using GitHub Actions for assigning issues to projects automatically, NodeJS build and test workflow available, OpenShift deployment available 
 | |***ArgoCD*** - steep learning curve, kubernetes focused, difficult set-up |
 ||***IBM CD*** - dependent on use of IBM CI workflow |
 || ***AWS CodeDepoly*** - dependent on use of AWS CodePipeline |
 ||***Helm Charts*** - Steep learning curve, available in the OpenShift Container platform however, sandbox version may have limitations, kubernetes focused |
 | **Implications:** | Ties us to GitHub Actions more, making using third-party tools more difficult to integrate into the pipeline |
-| **Derived requirements:** | Use as CD template to perform  deployment to OpenShift |
+| **Derived requirements:** | Use a CD template to perform  deployment to OpenShift |
 | **Related Decisions:** | Using GitHub Actions for building and storing the image |
 | **References:** | **[https://katalon.com/resources-center/blog/ci-cd-tools](https://katalon.com/resources-center/blog/ci-cd-tools)** |
 ||**[https://harness.io/blog/devops/ci-cd-tools/](https://harness.io/blog/devops/ci-cd-tools/)**|

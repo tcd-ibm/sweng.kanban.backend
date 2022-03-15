@@ -43,7 +43,7 @@
 | **Alternatives:** | ArgoCD, IBM CD, AWS CodeDeploy, Helm Charts (Openshift container platform) |
 | **Justifications:** | ***We chose GitHub Actions because*** - well documented, easy-of-use, readily available examples and templates, Already using GitHub Actions for assigning issues to projects automatically, NodeJS build and test workflow available, OpenShift deployment available 
 | |***ArgoCD*** - steep learning curve, kubernetes focused, difficult set-up |
-||***IBM CD*** - dependent on use of IBM CI workflow |
+||***IBM CD*** - dependent on use of IBM CI toolchain |
 || ***AWS CodeDepoly*** - dependent on use of AWS CodePipeline |
 ||***Helm Charts*** - Steep learning curve, available in the OpenShift Container platform however, sandbox version may have limitations, kubernetes focused |
 | **Implications:** | Ties us to GitHub Actions more, making using third-party tools more difficult to integrate into the pipeline |

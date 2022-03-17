@@ -14,7 +14,7 @@ on:
 
 env:
   REGISTRY: quay.io
-  IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
+  IMAGE_NAME: sweng312022/kanban_board_backend
   
 jobs:
   build_and_publish:

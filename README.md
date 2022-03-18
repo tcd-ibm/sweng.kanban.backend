@@ -6,4 +6,4 @@ Put your details into file called .env, reference .env_example as an example.
 
 There is a json file which contains documentation configuration for Postman. 
 
-Use ./run to start the containers.
+Use ./run to start the container and ./stop to stop them.

@@ -40,14 +40,6 @@ jobs:
           echo MONGODB_PORT=${{ secrets.MONGODB_PORT }} >> .env
           ls
 
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.ROBOT_ACCOUNT_NAME }}
-          password: ${{ secrets.QUAY_IO_TOKEN }}
-
       - name: Build from Dockerfile
         id: build-image
         uses: redhat-actions/buildah-build@v2

@@ -4,9 +4,9 @@ jobs:
   jshint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
-          fetch-depth: 32 # fetch 32 revisions behind to ensure there is a merge base
+          fetch-depth: 0 # fetch all history
       - name: Analyze code statically using JSHint
         uses: moneyforward/jshint-action@v0
         with:

@@ -10,11 +10,14 @@ var swimLaneModel = require("../models/SwimLaneModel");
 var taskModel = require("../models/TaskModel");
 // misplele test
 router.get("/listAllKanbanBoards", function (req, res, next) {
+  console.log("Attempting to list all kanbanboards");
   kanbanBoardModel
     .find({})
     .populate("kanbanBoardSwimLanes")
     .exec(function (err, boards) {
+      console.log("Receive response from database!");
       if (err) {
+        console.log(err);
         res.send(err);
       } else {
         res.send(boards);

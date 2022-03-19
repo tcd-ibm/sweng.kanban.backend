@@ -8,11 +8,11 @@ var swimLaneModel = require("../models/SwimLaneModel");
 var taskModel = require("../models/TaskModel")
 
 router.post("/moveTask", function (req, res, next) {
-    const taskTitle = req.body.taskTitle;
-    const taskDescription = req.body.taskDescription;
+    
     const oldswimlaneTitle = req.body.oldSwimlane;
     const targetswimlaneTitle = req.body.targetSwimlane;
-    
+    const taskTitle = req.body.taskTitle;
+    const taskDescription = req.body.taskDescription;
 
     if (taskTitle && taskDescription && oldswimlaneTitle && targetswimlaneTitle) {
         taskModel.findOne(

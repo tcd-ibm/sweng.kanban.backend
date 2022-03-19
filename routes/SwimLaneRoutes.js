@@ -5,7 +5,7 @@ var router = express.Router();
 
 var kanbanBoardModel = require("../models/KanbanBoardModel");
 var swimLaneModel = require("../models/SwimLaneModel");
-var taskModel = require("../models/Tasks")
+var taskModel = require("../models/TaskModel")
 
 router.post("/moveTask", function (req, res, next) {
     const taskTitle = req.body.taskTitle;

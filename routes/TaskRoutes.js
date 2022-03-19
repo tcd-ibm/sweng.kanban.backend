@@ -4,7 +4,7 @@ var router = express.Router();
 /*models*/
 
 var swimLaneModel = require("../models/SwimLaneModel");
-var taskModel = require("../models/Tasks")
+var taskModel = require("../models/TaskModel")
 
 router.post("/createTask", function (req, res, next) {
     const taskTitle = req.body.taskTitle;

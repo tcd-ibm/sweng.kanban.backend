@@ -29,7 +29,10 @@ app.use("/", rootRouter);
 
 /*Connecting to database*/
 
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URL,
+  {
+    serverSelectionTimeoutMS: 1000, 
+  });
 mongoose.connection.on("error", (error) => {
   console.log("Database connection error!. Here is the error:", error);
 });

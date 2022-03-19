@@ -30,6 +30,7 @@ jobs:
         run: |
           touch .env
           echo ${{ secrets.NODEJS_ENV }} >> .env
+          ls
 
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'

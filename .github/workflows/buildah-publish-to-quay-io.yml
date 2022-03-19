@@ -13,6 +13,7 @@ on:
 env:
   REGISTRY: quay.io
   IMAGE_NAME: sweng312022/kanban_board_backend
+  IMAGE_TAGS: ""
   
 jobs:
   build_and_publish:
@@ -25,6 +26,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        
+      - name: Determine image tags
+        if: env.IMAGE_TAGS == ''
+        run: |
+          echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
         
       - name: Create env file
         run: |
@@ -42,20 +48,21 @@ jobs:
           username: ${{ secrets.ROBOT_ACCOUNT_NAME }}
           password: ${{ secrets.QUAY_IO_TOKEN }}
 
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      - name: Build from Dockerfile
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          flavor: |
-            latest=true
-            prefix=
-            suffix=
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+          image: ${{ env.IMAGE_NAME }}
+          tags: ${{ env.IMAGE_TAGS }}
+          dockerfiles: |
+            ./Dockerfile
+            
+      - name: Push to registry
+        id: push-image
+        uses: redhat-actions/push-to-registry@v2
         with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.ROBOT_ACCOUNT_NAME }}
+          password: ${{ secrets.QUAY_IO_TOKEN }}

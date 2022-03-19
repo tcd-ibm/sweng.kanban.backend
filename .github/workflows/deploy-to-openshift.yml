@@ -7,7 +7,7 @@ env:
   OPENSHIFT_NAMESPACE: ""
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
   APP_NAME: "kanbanbackend"
-  APP_PORT: ""
+  APP_PORT: ${{ secrets.PORT }}
   
 on:
   workflow_run:

@@ -13,6 +13,7 @@ var kanbanBoardRouter = require("./routes/KanbanBoardRoutes");
 var testRouter = require("./routes/TestRoutes");
 var taskRouter = require("./routes/TaskRoutes");
 var swimLaneRouter = require("./routes/SwimLaneRoutes");
+var rootRouter = require("./routes/RootRoutes");
 
 var app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ app.use("/", kanbanBoardRouter);
 app.use("/", testRouter);
 app.use("/", taskRouter);
 app.use("/", swimLaneRouter);
+app.use("/", rootRouter);
 
 /*Connecting to database*/
 

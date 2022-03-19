@@ -9,6 +9,3 @@ jobs:
           fetch-depth: 0 # fetch all history
       - name: Analyze code statically using JSHint
         uses: moneyforward/jshint-action@v0
-        with:
-          files: '.'
-          options: '["--ext", ".js"]'

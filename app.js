@@ -29,7 +29,7 @@ app.use("/", swimLaneRouter);
 
 mongoose.connect(process.env.MONGODB_URL);
 mongoose.connection.on("error", (error) => {
-  console.log("Database connection error:", error);
+  console.log("Database connection error!. Here is the error:", error);
 });
 mongoose.connection.once("open", () => {
   console.log("Connected to Database!");

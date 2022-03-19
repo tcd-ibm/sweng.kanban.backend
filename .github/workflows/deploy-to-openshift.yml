@@ -6,7 +6,7 @@ env:
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
   OPENSHIFT_NAMESPACE: ""
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
-  APP_NAME: "KanbanBackend"
+  APP_NAME: "kanbanbackend"
   APP_PORT: ""
   
 on:

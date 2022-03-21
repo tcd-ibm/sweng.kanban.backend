@@ -13,7 +13,10 @@ router.get("/listAllKanbanBoards", function (req, res, next) {
   console.log("Attempting to list all kanbanboards");
   kanbanBoardModel
     .find({})
-    .populate("kanbanBoardSwimLanes")
+    .populate({
+      path    : 'kanbanBoardSwimLanes',
+      populate: { path: ' kanbanSwimLaneTasks' }
+    })
     .exec(function (err, boards) {
       console.log("Receive response from database!");
       if (err) {

@@ -5,6 +5,7 @@ WORKDIR /api
 # copy package.json into the container at /api
 COPY package*.json .
 # install dependencies
+RUN sudo apt install nodejs
 RUN npm install
 # Copy the current directory contents into the container at /api
 COPY . .

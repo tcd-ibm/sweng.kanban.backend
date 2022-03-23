@@ -1,5 +1,5 @@
 # Use a lighter version of Node as a parent image
-FROM mhart/alpine-node:latest
+FROM redhat/ubi8:latest
 # Set the working directory to /api
 WORKDIR /api
 # copy package.json into the container at /api

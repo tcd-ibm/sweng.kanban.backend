@@ -1,5 +1,8 @@
 /*External dependecies*/
 
+const https = require('https');
+const http = require('http');
+
 var createError = require("http-errors");
 var express = require("express");
 var mongoose = require("mongoose");
@@ -53,7 +56,20 @@ app.use(function (err, req, res, next) {
   res.json(err.message);
 });
 
-/*start listening*/
-app.listen(process.env.PORT || 8080, function () {
-  console.log("Listening to Port: " + process.env.PORT || 8080);
+// serve the API on 80 (HTTP) port
+const httpServer = http.createServer(app);
+
+httpServer.listen(process.env.HTTP_PORT,() => {
+    console.log('HTTP Server running on port '+ process.env.HTTP_PORT);
+});
+
+
+// Listen both http & https ports
+const httpsServer = https.createServer({
+  key: fs.readFileSync('/etc/letsencrypt/live/'+ process.env.API_URL +'/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/' + process.env.API_URL + '/fullchain.pem'),
+}, app);
+
+httpsServer.listen(process.env.HTTPS_PORT, () => {
+  console.log('HTTPS Server running on port '+process.env.HTTPS_PORT);
 });

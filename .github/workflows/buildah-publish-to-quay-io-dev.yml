@@ -1,4 +1,4 @@
-name: "Publish to Quay.io"
+name: "Publish to Quay.io Developer Build"
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -6,13 +6,12 @@ name: "Publish to Quay.io"
 # documentation.
 
 on:
-  push:
+  pull_request:
     branches: [ main ]
-    tags: [ 'v*.*.*' ]
 
 env:
   REGISTRY: quay.io
-  IMAGE_NAME: sweng312022/kanban_board_backend
+  IMAGE_NAME: sweng312022/kanban_board_backend_dev
   IMAGE_TAGS: ""
   
 jobs:
@@ -35,11 +34,10 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo MONGODB_URL=${{ secrets.MONGODB_URL }} >> .env
-          echo PORT=${{ secrets.PORT }} >> .env
-          echo MONGODB_PORT=${{ secrets.MONGODB_PORT }} >> .env
+          echo MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} >> .env
+          echo PORT=${{ secrets.PORT_DEV }} >> .env
+          echo MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} >> .env
           ls
-
       - name: Build from Dockerfile
         id: build-image
         uses: redhat-actions/buildah-build@v2

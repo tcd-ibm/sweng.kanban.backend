@@ -1,4 +1,4 @@
-name: OpenShiftDeployment
+name: OpenShiftDeploymentDev
 
 env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
@@ -6,12 +6,12 @@ env:
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
   OPENSHIFT_NAMESPACE: ${{ secrets.OPENSHIFT_PROJECT }}
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
-  APP_NAME: "kanbanbackend"
-  APP_PORT: ${{ secrets.PORT }}
+  APP_NAME: "kanbanbackend-dev"
+  APP_PORT: ${{ secrets.PORT_DEV }}
   
 on:
   workflow_run:
-    workflows: ["Publish to Quay.io"]
+    workflows: ["Publish to Quay.io Developer Build"]
     types:
       - completed
 jobs:   

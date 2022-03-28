@@ -5,7 +5,9 @@ name: "Publish to Quay.io Developer Build"
 # separate terms of service, privacy policy, and support
 # documentation.
 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [ main ]
 
 env:
   REGISTRY: quay.io

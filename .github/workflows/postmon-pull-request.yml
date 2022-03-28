@@ -1,4 +1,4 @@
-name: postman-pull-request
+name: Run Postman Integration Tests
 on: [push, pull_request] 
 
 jobs:

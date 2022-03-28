@@ -1,0 +1,59 @@
+name: "Publish to Quay.io Developer Build"
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  pull_request:
+    branches: [ main ]
+    tags: [ 'v*.*.*' ]
+
+env:
+  REGISTRY: quay.io
+  IMAGE_NAME: sweng312022/kanban_board_backend_dev
+  IMAGE_TAGS: ""
+  
+jobs:
+  build_and_publish:
+  
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Determine image tags
+        if: env.IMAGE_TAGS == ''
+        run: |
+          echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
+        
+      - name: Create env file
+        run: |
+          touch .env
+          echo MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} >> .env
+          echo PORT=${{ secrets.PORT_DEV }} >> .env
+          echo MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} >> .env
+          ls
+      - name: Build from Dockerfile
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: ${{ env.IMAGE_NAME }}
+          tags: ${{ env.IMAGE_TAGS }}
+          dockerfiles: |
+            ./Dockerfile
+            
+      - name: Push to registry
+        id: push-image
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.ROBOT_ACCOUNT_NAME }}
+          password: ${{ secrets.QUAY_IO_TOKEN }}

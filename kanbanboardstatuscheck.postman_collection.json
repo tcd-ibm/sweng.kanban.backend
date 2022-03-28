@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "b616aaa9-f471-42e4-b0db-2c454f0cca3f",
+		"name": "kanbanboard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list_kanban",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\t\t\t\t\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{kanban}}/listAllKanbanBoards",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"listAllKanbanBoards"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "list_kanban",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{kanban}}/listAllKanbanBoards",
+							"host": [
+								"{{kanban}}"
+							],
+							"path": [
+								"listAllKanbanBoards"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "access-control-allow-origin",
+							"value": "*"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "content-length",
+							"value": "464"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"1d0-79ab68Yu5MgWgY4g2asRF+guNKA\""
+						},
+						{
+							"key": "date",
+							"value": "Fri, 25 Mar 2022 13:47:29 GMT"
+						},
+						{
+							"key": "keep-alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"62365580ab853d16a716da2f\",\n        \"kanbanBoardTitle\": \"Test\",\n        \"kanbanBoardSwimLanes\": [\n            {\n                \"_id\": \"62365580ab853d16a716da2c\",\n                \"swimLaneTitle\": \"todo\",\n                \"kanbanSwimLaneTasks\": [],\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"62365580ab853d16a716da2d\",\n                \"swimLaneTitle\": \"doing\",\n                \"kanbanSwimLaneTasks\": [\n                    {\n                        \"_id\": \"6238c82d155a9ff3f5a54851\",\n                        \"taskTitle\": \"Task1\",\n                        \"taskDescription\": \"Description1\",\n                        \"__v\": 0\n                    }\n                ],\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"62365580ab853d16a716da2e\",\n                \"swimLaneTitle\": \"done\",\n                \"kanbanSwimLaneTasks\": [],\n                \"__v\": 0\n            }\n        ],\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "kanban",
+			"value": "http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com",
+			"type": "string"
+		}
+	]
+}

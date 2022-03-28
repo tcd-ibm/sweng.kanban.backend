@@ -37,7 +37,6 @@ jobs:
           touch .env
           echo MONGODB_URL=${{ secrets.MONGODB_URL }} >> .env
           echo PORT=${{ secrets.PORT }} >> .env
-          echo API_URL=${{ secrets.API_URL }} >> .env
           echo MONGODB_PORT=${{ secrets.MONGODB_PORT }} >> .env
           ls
 

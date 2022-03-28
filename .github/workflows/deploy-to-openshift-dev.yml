@@ -1,4 +1,4 @@
-name: OpenShiftDeployment
+name: OpenShiftDeploymentDev
 
 env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}

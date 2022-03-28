@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-        mongodb-version: [4.2]
+        mongodb-version: [5.0]
         
     steps:
       - name: Check out Git repositor
@@ -29,9 +29,6 @@ jobs:
 
       - name: Install newman
         run: npm install -g newman
-
-      - name: Seed mongo
-        run: mongo 127.0.0.1/infinite-digital-postman-tests  test/postman/setup.js
 
       - name: Run the API and Postmans tests
         run: | 

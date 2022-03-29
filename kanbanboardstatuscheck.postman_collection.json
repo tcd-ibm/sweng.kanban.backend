@@ -113,7 +113,7 @@
 	"variable": [
 		{
 			"key": "kanban",
-			"value": "http://kanbanbackend-petrukhp-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com",
+			"value": "http://localhost:9000",
 			"type": "string"
 		}
 	]

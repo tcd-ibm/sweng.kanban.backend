@@ -19,8 +19,10 @@ router.post("/createTask", function (req, res, next) {
         newTask.save(function (err) {
             if (err) {
                 res.send(err);
+                return;
             } else {
                 res.send("Successfully created a new task");
+                return;
             }
         });
 
@@ -31,14 +33,17 @@ router.post("/createTask", function (req, res, next) {
             function (err, updatedSwimlane) {
               if (err) {
                 res.send(err);
+                return;
               } else {
                 res.send(updatedSwimlane);
+                return;
               }
             }
           );
     }
     else {
         res.send("missing parameters")
+        return;
     }
 });
 

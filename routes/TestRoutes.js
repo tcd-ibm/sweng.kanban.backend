@@ -34,15 +34,18 @@ router.post("/addDummyData", function (req, res, next) {
   });
 
   res.send("Succesfully added dummy data!");
+  return;
 });
 
 router.delete("/deleteAllBoards", function(req, res, next){
     kanbanBoardModel.deleteMany({}, function(err){
         if(err){
             res.send(err);
+            return;
         }
         else{
             res.send("Succesfully deleted all boards!");
+            return;
         }
     });
 });
@@ -51,9 +54,11 @@ router.delete("/deleteAllSwimLanes", function(req, res, next){
     swimLaneModel.deleteMany({}, function(err){
         if(err){
             res.send(err);
+            return;
         }
         else{
             res.send("Succesfully deleted all SwimLanes!");
+            return;
         }
     });
 });

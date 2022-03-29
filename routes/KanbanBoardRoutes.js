@@ -8,7 +8,7 @@ var kanbanBoardModel = require("../models/KanbanBoardModel");
 var swimLaneModel = require("../models/SwimLaneModel");
 
 var taskModel = require("../models/TaskModel");
-// misplele test
+
 router.get("/listAllKanbanBoards", function (req, res, next) {
   console.log("Attempting to list all kanbanboards");
   kanbanBoardModel
@@ -25,8 +25,11 @@ router.get("/listAllKanbanBoards", function (req, res, next) {
       if (err) {
         console.log(err);
         res.send(err);
+        return;
+
       } else {
         res.send(boards);
+        return;
       }
     });
 });
@@ -41,12 +44,15 @@ router.get("/findKanbanBoardByTitle", function (req, res, next) {
       .exec(function (err, board) {
         if (err) {
           res.send(err);
+          return;
         } else {
           res.send(board);
+          return;
         }
       });
   } else {
     res.send("Title not specified!");
+    return;
   }
 });
 
@@ -59,12 +65,14 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
       function (err, deleted) {
         if (err) {
           res.send(err);
+          return;
         } else {
           swimLaneModel.findMany(
             { _id: { $in: deleted.kanbanBoardSwimLanes } },
             function (err, docs) {
               if (err) {
                 res.send(err);
+                return;
               } else {
                 for (let i = 0; i < docs.length; i++) {
                   taskModel.deleteMany(
@@ -72,6 +80,7 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
                     function (err) {
                       if (err) {
                         res.send(err);
+                        return;
                       }
                     }
                   );
@@ -85,11 +94,13 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
             function (err) {
               if (err) {
                 res.send(err);
+                return;
               } else {
                 res.send(
                   "Deleted successfully, deleted swimLanes: " +
                     deleted.kanbanBoardSwimLanes
                 );
+                return;
               }
             }
           );
@@ -98,6 +109,7 @@ router.delete("/deleteKanbanBoardByTitle", function (req, res, next) {
     );
   } else {
     res.send("Title not specified!");
+    return;
   }
 });
 
@@ -110,9 +122,11 @@ router.post("/createNewKanbanBoard", function (req, res, next) {
       function (err, duplicate) {
         if (err) {
           res.send(err);
+          return;
         } else {
           if (duplicate) {
             res.send("Such board already exists");
+            return;
           }
         }
       }
@@ -122,12 +136,15 @@ router.post("/createNewKanbanBoard", function (req, res, next) {
     newKanbanBoard.save(function (err) {
       if (err) {
         res.send(err);
+        return;
       } else {
         res.send("Successfully created a new kanban board");
+        return;
       }
     });
   } else {
     res.send("Title not specified, no board created!");
+    return;
   }
 });
 
@@ -143,6 +160,7 @@ router.post("/addSwimLaneToBoard", function (req, res, err) {
     newSwimLane.save(function (err) {
       if (err) {
         res.send(err);
+        return;
       }
     });
 
@@ -153,18 +171,23 @@ router.post("/addSwimLaneToBoard", function (req, res, err) {
       function (err, updatedBoard) {
         if (err) {
           res.send(err);
+          return;
         } else {
           res.send(updatedBoard);
+          return;
         }
       }
     );
   } else {
     if (kanbanBoardTitle) {
       res.send("SwimLane title not specified!");
+      return;
     } else if (swimLaneTitle) {
       res.send("Kanban Board title not specified!");
+      return;
     } else {
       res.send("Kanban board title and SwimLane title not specified!");
+      return;
     }
   }
 });

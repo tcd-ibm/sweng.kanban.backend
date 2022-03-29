@@ -20,6 +20,7 @@ router.post("/moveTask", function (req, res, next) {
             function (err, taskFound) {
               if (err) {
                 res.send(err);
+                return;
               } else {
                 const id = taskFound._id;
 
@@ -30,8 +31,10 @@ router.post("/moveTask", function (req, res, next) {
                   function (err, updatedSwimlane) {
                     if (err) {
                       res.send(err);
+                      return;
                     } else {
                       res.send(updatedSwimlane);
+                      return;
                     }
                   }
                 );
@@ -43,13 +46,16 @@ router.post("/moveTask", function (req, res, next) {
                   function (err, updatedSwimlane) {
                     if (err) {
                       res.send(err);
+                      return;
                     } else {
                       res.send(updatedSwimlane);
+                      return;
                     }
                   }
                 );
                 
-                res.send("task between swimlanes");
+                res.send("Moved task between swimlanes!");
+                return;
               }
             }
           );

@@ -42,7 +42,7 @@ router.post("/createTask", function (req, res, next) {
           );
     }
     else {
-        res.send("Missing parameters!")
+        res.send("Missing parameters !")
         return;
     }
 });

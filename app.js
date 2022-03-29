@@ -29,6 +29,8 @@ app.use("/", rootRouter);
 
 /*Connecting to database*/
 
+console.log("Attempting to log in to database!");
+
 mongoose.connect(process.env.MONGODB_URL,
   {
     serverSelectionTimeoutMS: 60 * 1000, 

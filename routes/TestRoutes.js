@@ -30,19 +30,24 @@ router.post("/addDummyData", function (req, res, next) {
   });
 
   testKanbanBoard.save(function (err, testBoard) {
-    console.log(testBoard);
+    if(err){
+      console.log(err);
+      return res.sendStatus(500);
+    }
+    else{
+      return res.send("Succesfully added dummy data!");
+    }
   });
-
-  res.send("Succesfully added dummy data!");
 });
 
 router.delete("/deleteAllBoards", function(req, res, next){
     kanbanBoardModel.deleteMany({}, function(err){
         if(err){
-            res.send(err);
+           console.log(err);
+           return res.sendStatus(500);
         }
         else{
-            res.send("Succesfully deleted all boards!");
+          return res.send("Deleted all Kanban Boards!");
         }
     });
 });
@@ -50,12 +55,14 @@ router.delete("/deleteAllBoards", function(req, res, next){
 router.delete("/deleteAllSwimLanes", function(req, res, next){
     swimLaneModel.deleteMany({}, function(err){
         if(err){
-            res.send(err);
+          console.log(err);
+          return res.sendStatus(500);
         }
         else{
-            res.send("Succesfully deleted all SwimLanes!");
+          return res.send("Succesfully deleted all SwimLanes!");
         }
     });
+
 });
 
 module.exports = router;

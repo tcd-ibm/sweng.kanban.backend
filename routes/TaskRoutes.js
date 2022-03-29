@@ -18,27 +18,27 @@ router.post("/createTask", function (req, res, next) {
         });
         newTask.save(function (err) {
             if (err) {
-                res.send(err);
-            } else {
-                res.send("Successfully created a new task");
+                return res.sendStatus(500);
+            }
+            else{
+              swimLaneModel.findOneAndUpdate(
+                { swimLaneTitle: swimlaneTitle },
+                { $push: { kanbanSwimLaneTasks: newTask._id } },
+                { new: true },
+                function (err, updatedSwimlane) {
+                  if (err) {
+                    return res.sendStatus(500);
+                  } else {
+                    return res.send(updatedSwimlane);
+                  }
+                }
+              );
             }
         });
 
-        swimLaneModel.findOneAndUpdate(
-            { swimLaneTitle: swimlaneTitle },
-            { $push: { kanbanSwimLaneTasks: newTask._id } },
-            { new: true },
-            function (err, updatedSwimlane) {
-              if (err) {
-                res.send(err);
-              } else {
-                res.send(updatedSwimlane);
-              }
-            }
-          );
     }
     else {
-        res.send("missing parameters")
+      return res.sendStatus(400);  
     }
 });
 

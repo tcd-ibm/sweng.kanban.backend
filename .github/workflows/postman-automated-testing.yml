@@ -10,8 +10,8 @@ jobs:
         mongodb-version: [5.0]
         
     steps:
-      - name: Check out Git repositor
-        uses: actions/checkout@v1
+      - name: Check out Git repository
+        uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v1
@@ -30,13 +30,21 @@ jobs:
       - name: Install newman
         run: npm install -g newman
 
+      - name: Create test env file
+        run: |
+          touch .env
+          echo MONGODB_URL=mongodb://127.0.0.1:27017/test-db >> .env
+          echo PORT=9000 >> .env
+          echo MONGODB_PORT=27017 >> .env
+          ls
+
       - name: Run the API and Postmans tests
         run: | 
-          npm run start:dev &
+          node app.js &
           sleep 60
           newman run "kanbanboardstatuscheck.postman_collection.json"
         env:
           MONGO_URI: "mongodb://127.0.0.1:27017/test-db"
-          PORT: "3000"
+          PORT: "9000"
           STAGE: "local"
           NODE_ENV: "develop"

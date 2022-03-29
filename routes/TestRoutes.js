@@ -47,7 +47,7 @@ router.delete("/deleteAllBoards", function(req, res, next){
            return res.sendStatus(500);
         }
         else{
-          return res.send("Deleted all Kanban Boards!")
+          return res.send("Deleted all Kanban Boards!");
         }
     });
 });

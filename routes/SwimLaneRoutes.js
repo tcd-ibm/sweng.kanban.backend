@@ -54,7 +54,7 @@ router.post("/moveTask", function (req, res, next) {
                   }
                 );
                 
-                res.send("Moved task between swimlanes!");
+                res.send("Moved task between swimlanes !");
                 return;
               }
             }

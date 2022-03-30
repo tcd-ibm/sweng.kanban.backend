@@ -65,4 +65,18 @@ router.delete("/deleteAllSwimLanes", function(req, res, next){
 
 });
 
+router.delete('/deleteAllSwimLanesCopy', function(req, res, next){
+  swimLaneModel.deleteMany({}, function(err){
+       /// fiwifowi  
+    if(err){
+        console.log(err);
+              return res.sendStatus(500);
+      }
+      else{
+        return res.send("Succfully deleted all SwimLanes!");
+      }
+  });
+
+});
+
 module.exports = router;

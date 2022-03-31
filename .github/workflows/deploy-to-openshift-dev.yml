@@ -48,10 +48,10 @@ jobs:
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
           port: ${{ env.APP_PORT }}
 
-      - name: Set environment server params
-        run: |     
-          oc set env deployment.apps/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} 
-           
+      - name: Set environment
+        run: |
+          oc set env deployment.apps/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} KEY_PEM=${{secrets.KEY_PEM}} CERT_PEM=${{secrets.CERT_PEM}}
+
       - name: Print application URL
         env:
           ROUTE: ${{ steps.deploy-and-expose.outputs.route }}

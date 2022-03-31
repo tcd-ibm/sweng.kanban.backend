@@ -47,6 +47,24 @@ jobs:
           image: quay.io/sweng312022/kanban_board_backend
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
           port: ${{ env.APP_PORT }}
+          
+      - name: Set environment
+        run: |
+          oc set env deployment.apps/kanbanbackend MONGODB_URL=${{ secrets.MONGODB_URL }} PORT=${{ secrets.PORT }} MONGODB_PORT=${{ secrets.MONGODB_PORT }}
+      
+      - name: Obtain a self signed certificate
+        run: |
+          openssl genrsa -out key-prod.key
+          openssl req -new -key key-prod.key -out csr-prod.csr -subj "/CN=${{ secrets.DOMAIN_WILDCARD }}"
+          openssl x509 -req -in csr-prod.csr -signkey key-prod.key -out crt-prod.crt
+          
+      - name: Delete Default Unsecure Route
+        run: |
+          oc delete route kanbanbackend
+          
+      - name: Create new edge route using self-signed certificate
+        run: |
+          oc create route edge --service kanbanbackend --hostname ${{ secrets.HOSTNAME }} --key key-prod.key --cert crt-prod.crt
 
       - name: Print application URL
         env:

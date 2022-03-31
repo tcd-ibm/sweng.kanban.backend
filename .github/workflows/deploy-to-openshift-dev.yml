@@ -48,12 +48,19 @@ jobs:
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
           port: ${{ env.APP_PORT }}
 
-      - name: Set environment
+      - name: Set environment server parms
+        run: |     
+          oc set env deployment.apps/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} 
+      
+      - name: Set environment HTTPS CERT
+        run: |
+           oc set env deployment.apps/kanbanbackend-dev CERT_PEM=${{ secrets.CERT_PEM }}
+           
+      - name: Set environment HTTPS KEY
         run: |
           oc set env deployment.apps/kanbanbackend-dev KEY_PEM=${{ secrets.KEY_PEM }} 
-          oc set env deployment.apps/kanbanbackend-dev CERT_PEM=${{ secrets.CERT_PEM }}
-          oc set env deployment.apps/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} 
-
+         
+           
       - name: Print application URL
         env:
           ROUTE: ${{ steps.deploy-and-expose.outputs.route }}

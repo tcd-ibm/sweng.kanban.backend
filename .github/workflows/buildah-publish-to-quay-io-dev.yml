@@ -30,14 +30,7 @@ jobs:
         if: env.IMAGE_TAGS == ''
         run: |
           echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
-        
-      - name: Create env file
-        run: |
-          touch .env
-          echo MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} >> .env
-          echo PORT=${{ secrets.PORT_DEV }} >> .env
-          echo MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} >> .env
-          ls
+
       - name: Build from Dockerfile
         id: build-image
         uses: redhat-actions/buildah-build@v2

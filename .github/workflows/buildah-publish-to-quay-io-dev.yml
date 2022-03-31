@@ -8,6 +8,8 @@ name: "Publish to Quay.io Developer Build"
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
 
 env:
   REGISTRY: quay.io

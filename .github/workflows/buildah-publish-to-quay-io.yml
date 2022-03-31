@@ -39,7 +39,7 @@ jobs:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAGS }}
           build-args:
-            PORT=${{ secrets.PORT_DEV }}
+            PORT=${{ secrets.PORT }}
           dockerfiles: |
             ./Dockerfile
             

@@ -52,6 +52,20 @@ jobs:
         run: |
           oc set env deployment.apps/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }}
 
+      - name: Obtain a self signed certificate
+        run: |
+          openssl genrsa -out key.key
+          openssl req -new -key key.key -out csr.csr -subj "/CN=${{ secrets.DOMAIN_WILDCARD }}"
+          openssl x509 -req -in csr.csr -signkey key.key -out crt.crt
+          
+      - name: Delete Default Unsecure Route
+        run: |
+          oc delete route kanbanbackend-dev
+          
+      - name: Create new edge route using self-signed certificate
+        run: |
+          oc create route edge --service kanbanbackend-dev --hostname ${{ secrets.HOSTNAME_DEV }} --key key.key --cert crt.crt
+      
       - name: Print application URL
         env:
           ROUTE: ${{ steps.deploy-and-expose.outputs.route }}

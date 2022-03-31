@@ -7,7 +7,6 @@ var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
 var https = require("https");
-var fs = request("fs");
 
 /*routers*/
 

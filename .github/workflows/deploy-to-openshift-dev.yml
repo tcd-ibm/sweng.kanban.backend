@@ -47,10 +47,10 @@ jobs:
           image: quay.io/sweng312022/kanban_board_backend_dev
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
           port: ${{ env.APP_PORT }}
-          env: |
-            MONGODB_URL=${{ secrets.MONGODB_URL_DEV }}
-            PORT=${{ secrets.PORT_DEV }}
-            MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }}
+
+      - name: Set environment
+        run: |
+          oc set env dc/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }}
 
       - name: Print application URL
         env:

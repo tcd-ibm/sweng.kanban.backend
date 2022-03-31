@@ -6,7 +6,11 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
+<<<<<<< HEAD
+=======
 var https = require("https");
+var fs = request("fs");
+>>>>>>> parent of f6a4778 (add https dependency)
 
 /*routers*/
 
@@ -56,14 +60,7 @@ app.use(function (err, req, res, next) {
   res.json(err.message);
 });
 
-https
-  .createServer(
-  {
-    key: process.env.KEY_PEM,
-    cert: process.env.CERT_PEM,
-  },
-  app
-  )
-  .listen(process.env.PORT || 8080, function (){
-    console.log("Listening to Port: " + process.env.PORT || 8080);
+/*start listening*/
+app.listen(process.env.PORT || 8080, function () {
+  console.log("Listening to Port: " + process.env.PORT || 8080);
 });

@@ -53,6 +53,6 @@ jobs:
           username: ${{ secrets.ROBOT_ACCOUNT_NAME }}
           password: ${{ secrets.QUAY_IO_TOKEN }}
 
-       - name: Wait for the image changes to propagate on quay.io
+      - name: Wait for the image changes to propagate on quay.io
         run: |
           sleep 10

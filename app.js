@@ -6,11 +6,9 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
-<<<<<<< HEAD
-=======
+
 var https = require("https");
 var fs = request("fs");
->>>>>>> parent of f6a4778 (add https dependency)
 
 /*routers*/
 

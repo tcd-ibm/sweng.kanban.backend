@@ -31,14 +31,6 @@ jobs:
         if: env.IMAGE_TAGS == ''
         run: |
           echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
-        
-      - name: Create env file
-        run: |
-          touch .env
-          echo MONGODB_URL=${{ secrets.MONGODB_URL }} >> .env
-          echo PORT=${{ secrets.PORT }} >> .env
-          echo MONGODB_PORT=${{ secrets.MONGODB_PORT }} >> .env
-          ls
 
       - name: Build from Dockerfile
         id: build-image
@@ -58,3 +50,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.ROBOT_ACCOUNT_NAME }}
           password: ${{ secrets.QUAY_IO_TOKEN }}
+
+      - name: Wait for the image changes to propagate on quay.io
+        run: |
+          sleep 10

@@ -6,6 +6,8 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
+var https = require("https");
+var fs = request("fs");
 
 /*routers*/
 
@@ -55,7 +57,14 @@ app.use(function (err, req, res, next) {
   res.json(err.message);
 });
 
-/*start listening*/
-app.listen(process.env.PORT || 8080, function () {
-  console.log("Listening to Port: " + process.env.PORT || 8080);
+https
+  .createServer(
+  {
+    key: process.env.KEY_PEM,
+    cert: process.env.CERT_PEM,
+  },
+  app
+  )
+  .listen(process.env.PORT || 8080, function (){
+    console.log("Listening to Port: " + process.env.PORT || 8080);
 });

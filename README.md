@@ -27,4 +27,4 @@ our code is clean.
 Finally, we use issues auto assignment automation to assign issues to our project automatically upon
 creation. 
 
-Please have a look in the documentation folder to learn more about how the pipeline was built, step by step
+Please have a look in the documentation folder to learn more about how the pipeline was built, step by step.

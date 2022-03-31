@@ -41,7 +41,7 @@ jobs:
       - name: Run the API and Postmans tests
         run: | 
           node app.js &
-          sleep 60
+          sleep 5
           newman run "kanbanboardstatuscheck.postman_collection.json"
         env:
           MONGO_URI: "mongodb://127.0.0.1:27017/test-db"

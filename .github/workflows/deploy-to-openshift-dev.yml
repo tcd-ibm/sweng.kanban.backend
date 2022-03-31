@@ -51,6 +51,8 @@ jobs:
       - name: Set environment
         run: |
           oc set env deployment.apps/kanbanbackend-dev MONGODB_URL=${{ secrets.MONGODB_URL_DEV }} PORT=${{ secrets.PORT_DEV }} MONGODB_PORT=${{ secrets.MONGODB_PORT_DEV }} 
+          oc set env deployment.apps/kanbanbackend-dev TEST=1234
+          oc set env deployment.apps/kanbanbackend-dev TEST=12341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234123412341234
           oc set env deployment.apps/kanbanbackend-dev KEY_PEM=${{ secrets.KEY_PEM }} 
           oc set env deployment.apps/kanbanbackend-dev CERT_PEM=${{ secrets.CERT_PEM }}
 

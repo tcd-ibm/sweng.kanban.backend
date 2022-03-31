@@ -54,9 +54,9 @@ jobs:
 
       - name: Obtain a self signed certificate
         run: |
-          openssl genrsa -out key.key
-          openssl req -new -key key.key -out csr.csr -subj "/CN=${{ secrets.DOMAIN_WILDCARD }}"
-          openssl x509 -req -in csr.csr -signkey key.key -out crt.crt
+          openssl genrsa -out key-dev.key
+          openssl req -new -key key-dev.key -out csr-dev.csr -subj "/CN=${{ secrets.DOMAIN_WILDCARD }}"
+          openssl x509 -req -in csr-dev.csr -signkey key-dev.key -out crt-dev.crt
           
       - name: Delete Default Unsecure Route
         run: |
@@ -64,7 +64,7 @@ jobs:
           
       - name: Create new edge route using self-signed certificate
         run: |
-          oc create route edge --service kanbanbackend-dev --hostname ${{ secrets.HOSTNAME_DEV }} --key key.key --cert crt.crt
+          oc create route edge --service kanbanbackend-dev --hostname ${{ secrets.HOSTNAME_DEV }} --key key-dev.key --cert crt-dev.crt
       
       - name: Print application URL
         env:

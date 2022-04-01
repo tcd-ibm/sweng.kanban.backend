@@ -241,7 +241,7 @@ After that we use the oc-new-app action to create and expose new app. We also ma
 
 The next step is optional and is required for setting up a self-signed ssl certificate using openssl. 
 
-You could use a provider signed certificate here instead, as long as you can set it up on your cluster, either by passing into through the action or directly in the openshift cluster.
+You could use a provider signed certificate here instead, as long as you can set it up on your cluster, either by passing into through the action or putting it directly into the openshift cluster.
 
 Typically, the deployment will create a non-secure http route, so we delete it first and then create a new edge route using the certificate we just signed.
 

@@ -307,7 +307,7 @@ jobs:
 
 ```
 
-In this workflow, we checkout the repo, set up local MongoDB service, install node dependecies and run our application. After that, we use newman to run the collection of tests that is specified in the root of our repo. When creating the collection please ensure that you set the application url to localhost.
+In this workflow, we checkout the repo, set up local MongoDB service, install node dependencies and run our application. After that, we use newman to run the collection of tests that is specified in the root of our repo. When creating the collection please ensure that you set the application url to localhost.
 
 ### Static analysis
 

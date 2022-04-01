@@ -243,9 +243,9 @@ The next step is optional and is required for setting up a self-signed ssl certi
 
 You could use a provider signed certificate here instead, as long as you can set it up on your cluster, either by passing it into through the action or putting it directly into the openshift cluster.
 
-Typically, the deployment will create a non-secure http route, so we delete it first and then create a new edge route using the certificate we just signed. Edge route means that we have https connection from user to route and route to service is http, because it is internal to the cluster and does not have to be encrypted. You can set up other route types such as re-encrypt or passthrough, please read openshift docs for that.
+Typically, the deployment will create a non-secure http route, so we delete it first and then create a new edge route using the certificate we just signed. Edge route means that we have https connection from user to route and http connection from route to service, because it is internal to the cluster and does not have to be encrypted. You can set up other route types such as re-encrypt or passthrough, please read openshift docs for that.
 
-Here we are using 2 secrets: DOMAIN_WILDCARD and HOSTNAME. They are required to obtain a relevant ssl certificate. DOMAIN_WILDCARD would normally be something like *.apps.sandbox-*.openshiftapps.com, if you are using developer sandbox. HOSTNAME could be something like my-app-my-project.apps.sandbox-*.openshiftapps.com.  
+Here we are using 2 secrets: DOMAIN_WILDCARD and HOSTNAME. They are required to obtain a relevant ssl certificate. DOMAIN_WILDCARD would normally be something like `*.apps.sandbox-*.openshiftapps.com`, if you are using developer sandbox. HOSTNAME could be something like `my-app-my-project.apps.sandbox-*.openshiftapps.com`.  
 
 After that we print the results.
 

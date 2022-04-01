@@ -51,7 +51,7 @@ The next secrets are application specific.
 For a typical NodeJS + MongoDB application we can set up PORT, MONGODB_PORT and MONGODB_URL. You can set PORT according to your needs now, but wait with MONGODB_PORT and MONGODB_URL, these will be set up at later stage. You may also want to create 2 versions of these secrets for testing and production, for example PORT_DEV and PORT_PROD. 
 
 
-### Setting up MongoDB in OpenShift Cluster.
+### Setting up MongoDB in OpenShift Cluster
 
 Search in the services catalog for MongoDB application and deploy it following the web UI in the developer sandbox. You may want to change the name of the database and your deployment or leave them as default. Here is an example of what you will see when creating a MongoDB deployment:
 

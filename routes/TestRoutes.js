@@ -5,6 +5,7 @@ var router = express.Router();
 
 var kanbanBoardModel = require("../models/KanbanBoardModel");
 var swimLaneModel = require("../models/SwimLaneModel");
+var taskModel = require("../models/TaskModel")
 
 function defaultDbError(err) {
   if (err) {
@@ -60,6 +61,19 @@ router.delete("/deleteAllSwimLanes", function(req, res, next){
         }
         else{
           return res.send("Succesfully deleted all SwimLanes!");
+        }
+    });
+
+});
+
+router.delete("/deleteAllTasks", function(req, res, next){
+    taskModel.deleteMany({}, function(err){
+        if(err){
+          console.log(err);
+          return res.sendStatus(500);
+        }
+        else{
+          return res.send("Succesfully deleted all Tasks!");
         }
     });
 

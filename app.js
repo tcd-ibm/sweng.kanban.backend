@@ -6,6 +6,26 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var cors = require("cors");
 var dotenv = require("dotenv").config();
+var passport = require("passport");
+var bodyParser = require("body-parser");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+var User = require("./models/userModel");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(require("express-session")({
+  secret: "node js mongodb",
+  resave: false,
+  saveUninitialized: false
+  }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.use(new LocalStrategy(User.authenticate()));
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
+  passport.authenticate("local")(
+    req, res, function () {
+        console.log("logged in");
+    });
 
 /*routers*/
 

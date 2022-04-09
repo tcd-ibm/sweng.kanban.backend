@@ -13,7 +13,7 @@ GithubActions for this step of the pipeline and quay.io as container registry.
 
 The next step is pulling the image and deploying it to openshift. We supply the url of the 
 container registry repository and an openshift deployment is performed by an official 
-RedHat Github Actions workflow. 
+RedHat Github Actions Workflow. 
 
 So as to facilitate both steps of the pipeline we need to create a number of github secrets,
 which ensure that we do not expose access tokens to our openshift cluster or quay.io robot account.

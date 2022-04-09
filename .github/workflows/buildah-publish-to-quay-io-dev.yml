@@ -6,11 +6,10 @@ name: "Publish to Quay.io Developer Build"
 # documentation.
 
 on:
-  pull_request:
-    branches: [ main ]
-    
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Run Postman Integration Tests"]
+    types:
+      - completed
 
 env:
   REGISTRY: quay.io

@@ -21,7 +21,7 @@ which ensure that we do not expose access tokens to our openshift cluster or qua
 We also do integration tests using postman, integration tests are triggered on every push or pull 
 request to the repo. We define tests using a postman collection.
 
-Another side part of the pipeline is static analysis, which is done using JS Hint, which ensures that
+Another side part of the pipeline is static analysis, which is done using Qodana, which ensures that
 our code is clean. 
 
 Finally, we use issues auto assignment automation to assign issues to our project automatically upon

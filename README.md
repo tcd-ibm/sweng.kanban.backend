@@ -12,7 +12,7 @@ registry repository. The repositories are separate for production and developmen
 GithubActions for this step of the pipeline and quay.io as container registry.
 
 The next step is pulling the image and deploying it to openshift. We supply the url of the 
-container registry repository and an openshift deployment is performed by an official 
+container registry repository and an Openshift deployment is performed by an official 
 RedHat Github Actions Workflow. 
 
 So as to facilitate both steps of the pipeline we need to create a number of github secrets,

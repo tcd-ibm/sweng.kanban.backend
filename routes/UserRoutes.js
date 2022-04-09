@@ -1,34 +1,38 @@
 var express = require("express");
 var router = express.Router();
-var User = require("./models/userModel");
+var User = require("../models/UserModel");
+var passport = require("passport");
 
 router.post("/register", function (req, res) {
-    var email = req.body.email
-    var password = req.body.password
-    User.register(new User({ email: email }),
-        password, function (err, user) {
-            if (err) {
-                console.log(err);
-                return res.sendStatus(200);
-            }
+  var username = req.body.username;
+  var password = req.body.password;
+  User.register(
+    new User({ username: username }),
+    password,
+    function (err, user) {
+      if (err) {
+        console.log(err);
+        return res.sendStatus(500);
+      } else {
+        passport.authenticate("local")(req, res, function (err) {
+          if (err) {
+            return res.sendStatus(500);
+          } else {
+            return res.sendStatus(200);
+          }
         });
+      }
+    }
+  );
 });
 
-router.post("/login", passport.authenticate("local", {
-    successRedirect: "/home",
-    failureRedirect: "/login"
-}),
-    function (req, res) {
-    });
-
-
+router.post("/login", passport.authenticate("local"), function (req, res) {
+  return res.sendStatus(200);
+});
 
 router.get("/logout", function (req, res) {
-    req.logout();
-    return res.sendStatus(200);
+  req.logout();
+  return res.sendStatus(200);
 });
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) return next();
-    console.log("Not logged in");
-}
+module.exports = router;

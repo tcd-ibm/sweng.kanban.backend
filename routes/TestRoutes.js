@@ -16,13 +16,27 @@ function defaultDbError(err) {
 router.post("/addDummyData", function (req, res, next) {
 
   /*populate database with test kanban board*/
-  const todo = new swimLaneModel({ swimLaneTitle: "todo" });
+
+  const task1 = new taskModel({taskTitle: "test 1", taskDescription: "test 1"});
+  task1.save(defaultDbError);
+
+  const task2 = new taskModel({taskTitle: "test 2", taskDescription: "test 2"});
+  task2.save(defaultDbError);
+
+  const task3 = new taskModel({taskTitle: "test 3", taskDescription: "test 3"});
+  task3.save(defaultDbError);
+
+  const task4 = new taskModel({taskTitle: "test 4", taskDescription: "test 4"});
+  task4.save(defaultDbError);
+
+
+  const todo = new swimLaneModel({ swimLaneTitle: "todo" , kanbanSwimLaneTasks: [task1._id]});
   todo.save(defaultDbError);
 
-  const doing = new swimLaneModel({ swimLaneTitle: "doing" });
+  const doing = new swimLaneModel({ swimLaneTitle: "doing", kanbanSwimLaneTasks: [task2._id, task3._id] });
   doing.save(defaultDbError);
 
-  const done = new swimLaneModel({ swimLaneTitle: "done" });
+  const done = new swimLaneModel({ swimLaneTitle: "done", kanbanSwimLaneTasks: [task4._id] });
   done.save(defaultDbError);
 
   const testKanbanBoard = new kanbanBoardModel({

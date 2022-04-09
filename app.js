@@ -9,26 +9,12 @@ var dotenv = require("dotenv").config();
 var passport = require("passport");
 var bodyParser = require("body-parser");
 var LocalStrategy = require("passport-local");
-var passportLocalMongoose = require("passport-local-mongoose");
-var User = require("./models/userModel");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(require("express-session")({
-  secret: "node js mongodb",
-  resave: false,
-  saveUninitialized: false
-  }));
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.use(new LocalStrategy(User.authenticate()));
-  passport.serializeUser(User.serializeUser());
-  passport.deserializeUser(User.deserializeUser());
-  passport.authenticate("local")(
-    req, res, function () {
-        console.log("logged in");
-    });
+var User = require("./models/UserModel");
+
 
 /*routers*/
 
+var userRouter = require("./routes/UserRoutes");
 var kanbanBoardRouter = require("./routes/KanbanBoardRoutes");
 var testRouter = require("./routes/TestRoutes");
 var taskRouter = require("./routes/TaskRoutes");
@@ -40,12 +26,25 @@ app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(require("express-session")({
+secret: "node js mongodb",
+resave: false,
+saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 app.use("/", kanbanBoardRouter);
 app.use("/", testRouter);
 app.use("/", taskRouter);
 app.use("/", swimLaneRouter);
 app.use("/", rootRouter);
+app.use("/", userRouter);
 
 /*Connecting to database*/
 
@@ -74,6 +73,11 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.json(err.message);
 });
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  console.log("Not logged in");
+}
 
 /*start listening*/
 app.listen(process.env.PORT || 8080, function () {

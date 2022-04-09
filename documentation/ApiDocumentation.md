@@ -1,64 +1,49 @@
-# Project: KanbanBoardAPI
-# Introduction
-This api provides a number of endpoints to facilitate the logic for kanban board application.
+# Project: kanbantests
 
-# Authentication
-Authentification is currently not required
-
-## End-point: host_url/listAllKanbanBoards
-Lists all kanban boards stored in the database and populates the referenced swimlanes in them.
-
-### Method: GET
->```
->undefined
->```
-### Response: 200
-```json
-[{"_id":"6203c46d9257dc018bcd3c9e","kanbanBoardTitle":"Test","kanbanBoardSwimLanes":[{"_id":"6203c46d9257dc018bcd3c9b","swimLaneTitle":"todo","__v":0},{"_id":"6203c46d9257dc018bcd3c9c","swimLaneTitle":"doing","__v":0},{"_id":"6203c46d9257dc018bcd3c9d","swimLaneTitle":"done","__v":0}],"__v":0}]
-```
-
-
-⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
-
-## End-point: host_url/findKanbanBoardByTitle
-Finds one board based on its title, the associated swimlanes are populated:
-
-Requires field "title" in the header. 
-
-If no board is found, returns a corresponding error message.
-
-### Method: GET
->```
->undefined
->```
-### Headers
-
-|Content-Type|Value|
-|---|---|
-|title|Test|
-
-
-### Response: 200
-```json
-{"_id":"6203c46d9257dc018bcd3c9e","kanbanBoardTitle":"Test","kanbanBoardSwimLanes":[{"_id":"6203c46d9257dc018bcd3c9b","swimLaneTitle":"todo","__v":0},{"_id":"6203c46d9257dc018bcd3c9c","swimLaneTitle":"doing","__v":0},{"_id":"6203c46d9257dc018bcd3c9d","swimLaneTitle":"done","__v":0}],"__v":0}
-```
-
-
-⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
-
-## End-point: host_url/deleteKanbanBoardByTitle
-Deletes a kanban board by title. Also deletes all swimlanes referenced by the kanban board. Has no effect if kanban board is not found:
-
-Needs the following headers:
-
-Content-Type: application/json
-
-Needs a title in the body formatted as json:
-
-{'title': 'yourtitle'}
+## End-point: DeleteAllBoards
 ### Method: DELETE
 >```
->undefined
+>{{kanban}}/deleteAllBoards
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: DeleteAllSwimLanes
+### Method: DELETE
+>```
+>{{kanban}}/deleteAllSwimLanes
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: DeleteAllTasks
+### Method: DELETE
+>```
+>{{kanban}}/deleteAllTasks
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: AddDummyData
+### Method: POST
+>```
+>{{kanban}}/addDummyData
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: ListKanbanBoards
+### Method: GET
+>```
+>{{kanban}}/listAllKanbanBoards
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: CreateKanbanBoard
+### Method: POST
+>```
+>{{kanban}}/createNewKanbanBoard
 >```
 ### Headers
 
@@ -67,34 +52,26 @@ Needs a title in the body formatted as json:
 |Content-Type|application/json|
 
 
+### Headers
+
+|Content-Type|Value|
+|---|---|
+|||
+
+
 ### Body (**raw**)
 
 ```json
-{"title": "Test"}
-```
-
-### Response: 200
-```json
-Deleted successfully, deleted swimLanes: 6203c46d9257dc018bcd3c9b,6203c46d9257dc018bcd3c9c,6203c46d9257dc018bcd3c9d
+{"title": "Dummy Kanban"}
 ```
 
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: host_url/createNewKanbanBoard
-Creates a new kanban board. Kanbanboards have to be unique by title, if kanban board already exists, has no effect.
-
-Required headers:
-
-Content-Type: application/json
-
-Needs title parameter in the json body of the request:
-
-{"title": "Pavel's board"}
-
+## End-point: AddSwimLane
 ### Method: POST
 >```
->undefined
+>{{kanban}}/addSwimLaneToBoard
 >```
 ### Headers
 
@@ -106,102 +83,140 @@ Needs title parameter in the json body of the request:
 ### Body (**raw**)
 
 ```json
-{"title": "Pavel"}
-```
-
-### Response: 200
-```json
-Successfully created a new kanban board
-```
-
-
-⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
-
-## End-point: host_url/addSwimLaneToBoard
-Adds a new SwimLane to the kanban board. If no board exists, has no effect.
-
-Required headers:
-
-Content-Type: application/json
-
-Needs title parameter in the json body of the request for both kanban board and SwimLane:
 
 {
-	"kanbanBoardTitle":"Pavel",
-	"swimLaneTitle": "Test"
-}
-
-### Method: POST
->```
->undefined
->```
-### Headers
-
-|Content-Type|Value|
-|---|---|
-|Content-Type|application/json|
-
-
-### Body (**raw**)
-
-```json
-{
-	"kanbanBoardTitle":"Pavel",
-	"swimLaneTitle": "Test"
+	"kanbanBoardId": "{{testid}}",
+	"swimLaneTitle": "Test Swimlane"
 }
 ```
 
-### Response: 200
-```json
-{"_id":"6203c4cf9257dc018bcd3ca9","kanbanBoardTitle":"Pavel","kanbanBoardSwimLanes":["6203c4f69257dc018bcd3cac"],"__v":0}
-```
-
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: host_url/addDummyData
-For testing purposes only. Adds a dummy kanban board titled "Test" and 3 associated swim lanes when accessed.
-
-Does not care about headers and body.
+## End-point: AddDuplicateSwimLane
 ### Method: POST
 >```
->undefined
+>{{kanban}}/addSwimLaneToBoard
 >```
-### Response: 200
+### Headers
+
+|Content-Type|Value|
+|---|---|
+|Content-Type|application/json|
+
+
+### Body (**raw**)
+
 ```json
-Succesfully added dummy data!
+
+{
+	"kanbanBoardId":"{{testid}}",
+	"swimLaneTitle": "Test Swimlane"
+}
 ```
 
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: host_url/deleteAllBoards
-For testing purposes only. Deletes all boards, but does not affect swimlanes.
+## End-point: FindKanbanId
+### Method: GET
+>```
+>{{kanban}}/findKanbanBoardById
+>```
+### Headers
 
-Does not care about header and body.
-### Method: DELETE
+|Content-Type|Value|
+|---|---|
+|id|{{testid}}|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: FindKanbanIdWrongIdFormat
+### Method: GET
 >```
->undefined
+>{{kanban}}/findKanbanBoardById
 >```
-### Response: 200
+### Headers
+
+|Content-Type|Value|
+|---|---|
+|id|abcdefghi|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Create New Task
+### Method: POST
+>```
+>{{kanban}}/createTask
+>```
+### Headers
+
+|Content-Type|Value|
+|---|---|
+|Content-Type|application/json|
+
+
+### Body (**raw**)
+
 ```json
-Succesfully deleted all boards!
+{
+    "taskTitle": "Test 1234",
+    "taskDescription": "Test Description 1234",
+    "swimLaneId": "{{todoid}}"
+}
 ```
 
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: host_url/deleteAllSwimLanes
-For testing purposes only! Deletes all swim lanes but does not affect the references in kanban boards.
+## End-point: Move Task
+### Method: POST
+>```
+>{{kanban}}/moveTask
+>```
+### Headers
 
-Does not care about header and body.
+|Content-Type|Value|
+|---|---|
+|Content-Type|application/json|
+
+
+### Body (**raw**)
+
+```json
+{
+    "oldSwimLaneId": "{{todoid}}",
+    "targetSwimLaneId": "{{doingid}}",
+    "taskId": "{{task1id}}"
+}
+```
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: DeleteKanbanById
 ### Method: DELETE
 >```
->undefined
+>{{kanban}}/deleteKanbanBoardById
 >```
-### Response: 200
+### Headers
+
+|Content-Type|Value|
+|---|---|
+|Content-Type|application/json|
+
+
+### Body (**raw**)
+
 ```json
-Succesfully deleted all SwimLanes!
+{
+    "id": "{{testid}}"
+}
+
 ```
 
 

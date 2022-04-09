@@ -1,0 +1,747 @@
+{
+	"info": {
+		"_postman_id": "6b2ad204-3d82-4fea-b04b-4fa855023ad6",
+		"name": "kanbantests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DeleteAllBoards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{kanban}}/deleteAllBoards",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"deleteAllBoards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAllSwimLanes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{kanban}}/deleteAllSwimLanes",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"deleteAllSwimLanes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAllTasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{kanban}}/deleteAllTasks",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"deleteAllTasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDummyData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{kanban}}/addDummyData",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"addDummyData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListKanbanBoards",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The kanban board response has all expected properties\", () => {\r",
+							"    //parse the response json,\r",
+							" const responseJson = pm.response.json();\r",
+							" const kanbanBoard = responseJson[0];\r",
+							"\r",
+							"pm.expect(kanbanBoard.kanbanBoardTitle).to.be.a(\"string\");\r",
+							"pm.expect(kanbanBoard._id).to.be.a(\"string\");\r",
+							"pm.expect(kanbanBoard.kanbanBoardTitle).equal(\"Test\");\r",
+							"pm.expect(kanbanBoard.kanbanBoardSwimLanes.length).equal(3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"The swimlane response has all expected properties\", () => {\r",
+							"    //parse the response json,\r",
+							"const responseJson = pm.response.json();\r",
+							"const kanbanBoard = responseJson[0];\r",
+							"\r",
+							"const kanbanSwimLanes = kanbanBoard.kanbanBoardSwimLanes;\r",
+							"\r",
+							"const todo = kanbanSwimLanes[0];\r",
+							"const doing = kanbanSwimLanes[1];\r",
+							"const done = kanbanSwimLanes[2];\r",
+							"\r",
+							"console.log(todo);\r",
+							"\r",
+							"pm.collectionVariables.set('task1id', \r",
+							"            todo.kanbanSwimLaneTasks[0]._id);\r",
+							"\r",
+							"pm.collectionVariables.set('todoid', \r",
+							"            todo._id); \r",
+							"\r",
+							"pm.collectionVariables.set('doingid', \r",
+							"            doing._id); \r",
+							"\r",
+							"pm.collectionVariables.set('testid', \r",
+							"    kanbanBoard._id);\r",
+							"\r",
+							"pm.expect(todo.swimLaneTitle).to.be.a(\"string\");\r",
+							"pm.expect(doing.swimLaneTitle).to.be.a(\"string\");\r",
+							"pm.expect(done.swimLaneTitle).to.be.a(\"string\");\r",
+							"pm.expect(todo.kanbanSwimLaneTasks.length).equal(1);\r",
+							"pm.expect(doing.kanbanSwimLaneTasks.length).equal(2);\r",
+							"pm.expect(done.kanbanSwimLaneTasks.length).equal(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{kanban}}/listAllKanbanBoards",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"listAllKanbanBoards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateKanbanBoard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response is correct\", function () {\r",
+							"\t\tpm.expect(pm.response.text()).equal(\"Successfully created a new kanban board\");\r",
+							"\t\t});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Dummy Kanban\"}"
+				},
+				"url": {
+					"raw": "{{kanban}}/createNewKanbanBoard",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"createNewKanbanBoard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddSwimLane",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"kanbanBoardId\": \"{{testid}}\",\r\n\t\"swimLaneTitle\": \"Test Swimlane\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{kanban}}/addSwimLaneToBoard",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"addSwimLaneToBoard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddDuplicateSwimLane",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"\t\tpm.response.to.have.status(500);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"kanbanBoardId\":\"{{testid}}\",\r\n\t\"swimLaneTitle\": \"Test Swimlane\"\r\n}"
+				},
+				"url": {
+					"raw": "{{kanban}}/addSwimLaneToBoard",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"addSwimLaneToBoard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindKanbanId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "{{testid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{kanban}}/findKanbanBoardById",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"findKanbanBoardById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindKanbanIdWrongIdFormat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"\t\tpm.response.to.have.status(500);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "abcdefghi",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{kanban}}/findKanbanBoardById",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"findKanbanBoardById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The create task response has all expected properties\", () => {\r",
+							"    //parse the response json,\r",
+							" const swimLane = pm.response.json();\r",
+							"\r",
+							"pm.expect(swimLane._id).to.be.a(\"string\");\r",
+							"pm.expect(swimLane.swimLaneTitle).to.be.a(\"string\");\r",
+							"pm.expect(swimLane.swimLaneTitle).equal(\"todo\");\r",
+							"pm.expect(swimLane.kanbanSwimLaneTasks.length).equal(2);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"taskTitle\": \"Test 1234\",\r\n    \"taskDescription\": \"Test Description 1234\",\r\n    \"swimLaneId\": \"{{todoid}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{kanban}}/createTask",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"createTask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Move Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"The move task response has all expected properties\", () => {\r",
+							"    //parse the response json,\r",
+							" const swimLane = pm.response.json();\r",
+							"\r",
+							"pm.expect(swimLane._id).to.be.a(\"string\");\r",
+							"pm.expect(swimLane.swimLaneTitle).to.be.a(\"string\");\r",
+							"pm.expect(swimLane.swimLaneTitle).equal(\"doing\");\r",
+							"pm.expect(swimLane.kanbanSwimLaneTasks.length).equal(3);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"oldSwimLaneId\": \"{{todoid}}\",\r\n    \"targetSwimLaneId\": \"{{doingid}}\",\r\n    \"taskId\": \"{{task1id}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{kanban}}/moveTask",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"moveTask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteKanbanById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\t\tpm.response.to.have.status(200);\r",
+							"\t\t});\r",
+							"\r",
+							"pm.test(\"API responds within the expected treshhold\", () => {\r",
+							"  // set the response time in milliseconds\r",
+							"  const expectedTimeInMilliseconds = 1000;\r",
+							"\r",
+							"  pm.expect(pm.response.responseTime).to.be.lessThan(\r",
+							"    expectedTimeInMilliseconds + 1,\r",
+							"    `The endpoint did not respond within ${expectedTimeInMilliseconds} ms. Response came in ${pm.response.responseTime} ms`\r",
+							"  );\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"{{testid}}\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{kanban}}/deleteKanbanBoardById",
+					"host": [
+						"{{kanban}}"
+					],
+					"path": [
+						"deleteKanbanBoardById"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "kanban",
+			"value": "http://localhost:9000",
+			"type": "string"
+		},
+		{
+			"key": "task1id",
+			"value": ""
+		},
+		{
+			"key": "todoid",
+			"value": ""
+		},
+		{
+			"key": "doingid",
+			"value": ""
+		},
+		{
+			"key": "testid",
+			"value": ""
+		}
+	]
+}

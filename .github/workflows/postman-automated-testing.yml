@@ -42,7 +42,7 @@ jobs:
         run: | 
           node app.js &
           sleep 5
-          newman run "kanbanboardstatuscheck.postman_collection.json"
+          newman run "kanbantests.postman_collection.json"
         env:
           MONGO_URI: "mongodb://127.0.0.1:27017/test-db"
           PORT: "9000"

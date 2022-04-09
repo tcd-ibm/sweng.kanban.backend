@@ -61,3 +61,24 @@
 ||**[https://docs.openshift.com/container-platform/3.11/dev_guide/deployments/how_deployments_work.html](https://docs.openshift.com/container-platform/3.11/dev_guide/deployments/how_deployments_work.html)**|
 ||**[https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/](https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/)**|
 ||https://www.trustradius.com/products/travis-ci/reviews?qs=pros-and-cons#product-details|
+
+# Static Analysis Tool
+|  |  |
+|--|--|
+| **Subject Area** | CI/CD Pipeline |
+| **Topic** | Static Analysis Tool |
+| **Architectural Decision** | Selecting a tool to automatically detect code smells |
+| **Motivation** | Good software development process|  
+|  | Increased integration speed |
+| **Requirements** | Compatibility with JS |
+| **Tool Selected** | Qodana |
+| **Alternatives**  | SonarCloud, CodeFactor, Semgrep |
+| **Justification** | ***Qodana*** ++ Easy to set-up, ++ Easy integration with GitHub workflows, ++ Detects and presents code smells within the GitHub Actions UI |
+|  | ***SonarCloud***  -\- Missed code smells that alternative tools detected |
+|  | ***CodeFactor*** -\- Doesn't integrate through GitHub Actions |
+|  | ***Semgrep*** -\- Difficult to use, -\- Unclear UI |
+| **References** | https://github.com/marketplace/category/code-quality |
+|  | https://github.com/marketplace/semgrep-dev |
+|  | https://github.com/marketplace/qodana |
+|  | https://github.com/marketplace/codefactor |
+|  | https://github.com/marketplace/actions/sonarcloud-scan |

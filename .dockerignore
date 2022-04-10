@@ -2,3 +2,5 @@
 !app.js
 !routes
 !models
+!package.json
+!package-lock.json

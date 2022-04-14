@@ -311,12 +311,12 @@ In this workflow, we checkout the repo, set up local MongoDB service, install no
 
 ### Static analysis
 
-We started with using js-hint as a simple static analysis tool, but then we decided to switch to ...
+We started with using js-hint as a simple static analysis tool, but then we decided to switch to Qodana.
 
 
 ### Security scans
 
-TODO
+Security scans are automatically performed on Quay.io. We also use dependabot and CodeQL in the github repo.
 
 ### Automated issue assignment
 

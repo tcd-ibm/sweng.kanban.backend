@@ -10,7 +10,7 @@
     "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
     "jade": "^0.29.0",
-    "mongoose": "^6.2.0",
+    "mongoose": "^6.7.2",
     "morgan": "~1.9.1",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
